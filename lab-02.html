@@ -386,6 +386,9 @@ plastic_data_all &lt;- data1
 
 
 # Member 4 (pair 2) write code to join your data to &#39;plastic_data_all&#39;:
+plastic_data_all &lt;- data2 %&gt;%
+  select(-name) %&gt;%
+  left_join(plastic_data_all, by = &quot;code&quot;)
 
 
 
