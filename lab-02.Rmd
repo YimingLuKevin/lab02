@@ -92,7 +92,7 @@ plastic_data_all%>% count(region)%>%arrange(desc(n))
 
 ```{r Ex2, message = FALSE}
 # Write your code here to answer exercise 2
-plastic_data_all$total_mismanage_plastic<-round(plastic_data_all$mismanaged_plastic_ocean * plastic_data_all$population, 2)
+plastic_data_all$total_mismanage_plastic<-round(plastic_data_all$mismanaged_plastic_ocean * plastic_data_all$population, 1)
 #mean
 plastic_data_all%>%summarise(mean(total_mismanage_plastic))
 

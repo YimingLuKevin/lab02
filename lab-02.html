@@ -447,14 +447,61 @@ plastic_data_all%&gt;%summarise(mean(total_mismanage_plastic))</code></pre>
 ##   `mean(total_mismanage_plastic)`
 ##                             &lt;dbl&gt;
 ## 1                           6198.</code></pre>
+<pre class="r"><code>#highest
+plastic_data_all%&gt;%summarise(max(total_mismanage_plastic))</code></pre>
+<pre><code>## # A tibble: 1 × 1
+##   `max(total_mismanage_plastic)`
+##                            &lt;dbl&gt;
+## 1                        360844.</code></pre>
+<pre class="r"><code>#lowest
+plastic_data_all%&gt;%summarise(min(total_mismanage_plastic))</code></pre>
+<pre><code>## # A tibble: 1 × 1
+##   `min(total_mismanage_plastic)`
+##                            &lt;dbl&gt;
+## 1                              0</code></pre>
 </div>
 <div id="ex-3." class="section level3">
 <h3>Ex 3.</h3>
-<pre class="r"><code># Write your code here to answer exercise 3</code></pre>
+<pre class="r"><code># Write your code here to answer exercise 3
+plastic_data_all$pct_mismanaged_plastic_ocean=round(plastic_data_all$mismanaged_plastic_ocean/plastic_data_all$mismanaged_plastic*100,2)
+#median
+plastic_data_all%&gt;%
+  group_by(region)%&gt;%
+  summarise(median=median(pct_mismanaged_plastic_ocean,na.rm=TRUE))</code></pre>
+<pre><code>## # A tibble: 6 × 2
+##   region                          median
+##   &lt;chr&gt;                            &lt;dbl&gt;
+## 1 Africa                            0.53
+## 2 Asia                              0.97
+## 3 Europe                            0.85
+## 4 Latin America and The Caribbean   3.07
+## 5 North America                     0.96
+## 6 Oceania                           1.58</code></pre>
 </div>
 <div id="ex-4." class="section level3">
 <h3>Ex 4.</h3>
-<pre class="r"><code># Write your code here to answer exercise 4</code></pre>
+<pre class="r"><code># Write your code here to answer exercise 4
+plastic_data_all%&gt;%
+  rename(pop=population)%&gt;%
+  rename(reg=region)%&gt;%
+  rename(mpo=mismanaged_plastic_ocean)%&gt;%
+  rename(mp=mismanaged_plastic)%&gt;%
+  rename(tmp=total_mismanage_plastic)%&gt;%
+  rename(pct=pct_mismanaged_plastic_ocean)</code></pre>
+<pre><code>## # A tibble: 159 × 8
+##    code  reg                               pop     mpo name      mp    tmp   pct
+##    &lt;chr&gt; &lt;chr&gt;                           &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+##  1 AGO   Africa                         3.18e4 0.0270  Ango…  7.45  8.59e2  0.36
+##  2 ALB   Europe                         2.88e3 0.543   Alba… 24.2   1.56e3  2.24
+##  3 ARE   Asia                           9.18e3 0.00143 Unit…  0.526 1.31e1  0.27
+##  4 ARG   Latin America and The Caribbe… 4.46e4 0.0924  Arge… 10.4   4.12e3  0.89
+##  5 ATG   Latin America and The Caribbe… 9.19e1 0.0206  Anti…  6.46  1.9 e0  0.32
+##  6 AUS   Oceania                        2.52e4 0.00127 Aust…  0.209 3.2 e1  0.61
+##  7 BEL   Europe                         1.15e4 0.00295 Belg…  0.198 3.38e1  1.49
+##  8 BEN   Africa                         1.21e4 0.139   Benin 11.3   1.68e3  1.23
+##  9 BFA   Africa                         2.07e4 0       Burk… 15.6   0       0   
+## 10 BGD   Asia                           1.65e5 0.151   Bang…  6.27  2.49e4  2.41
+## # ℹ 149 more rows</code></pre>
 </div>
 </div>
 
