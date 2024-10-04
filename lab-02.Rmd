@@ -95,7 +95,10 @@ plastic_data_all%>% count(region)%>%arrange(desc(n))
 plastic_data_all$total_mismanage_plastic<-round(plastic_data_all$mismanaged_plastic_ocean * plastic_data_all$population, 1)
 #mean
 plastic_data_all%>%summarise(mean(total_mismanage_plastic))
-
+#highest
+plastic_data_all%>%summarise(max(total_mismanage_plastic))
+#lowest
+plastic_data_all%>%summarise(min(total_mismanage_plastic))
 ```
 
 
@@ -103,8 +106,11 @@ plastic_data_all%>%summarise(mean(total_mismanage_plastic))
 
 ```{r Ex3, message = FALSE}
 # Write your code here to answer exercise 3
-
-
+plastic_data_all$pct_mismanaged_plastic_ocean=round(plastic_data_all$mismanaged_plastic_ocean/plastic_data_all$mismanaged_plastic*100,2)
+#median
+plastic_data_all%>%
+  group_by(region)%>%
+  summarise(median=median(pct_mismanaged_plastic_ocean,na.rm=TRUE))
 
 ```
 
@@ -113,7 +119,13 @@ plastic_data_all%>%summarise(mean(total_mismanage_plastic))
 
 ```{r Ex4, message = FALSE}
 # Write your code here to answer exercise 4
-
+plastic_data_all%>%
+  rename(pop=population)%>%
+  rename(reg=region)%>%
+  rename(mpo=mismanaged_plastic_ocean)%>%
+  rename(mp=mismanaged_plastic)%>%
+  rename(tmp=total_mismanage_plastic)%>%
+  rename(pct=pct_mismanaged_plastic_ocean)
 
 
 ```
