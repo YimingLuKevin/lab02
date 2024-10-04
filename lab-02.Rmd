@@ -1,6 +1,6 @@
 ---
 title: "Lab 02 - Global plastic waste"
-author: "Team Name: Yiming Lu, Junsong Tang, Zeyu Guo, Junxi Lu, Yushen Hui and User6"
+author: "Team Name: Yiming Lu, Junsong Tang, Zeyu Guo, Junxi Lu, Yushen Hui and Boning Zhang"
 date: "`r Sys.Date()`"
 output: html_document
 ---
